@@ -6,6 +6,12 @@ export default function reducer(state = {todos: []}, action) {
             return {
                 todos : [...state.todos, {text: action.text, isDown: false, id: id++}]
                 }
+        case 'CHANGEISDOWN':
+            const todo=state.todos.find(todo=>todo.id === action.id);
+            todo.isDown=!todo.isDown;
+            return {
+                todos:[...state.todos]
+            }
 
     }
     return state;
