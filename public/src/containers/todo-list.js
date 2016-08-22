@@ -7,7 +7,7 @@ class ToDoList extends Component {
             return <div key={index}  >
                 <input type="checkbox" checked={item.isDown} onClick={this.props.changeIsDown.bind(this,item.id)}/>
                 {item.isDown? <s>{item.text}</s>  :item.text}
-                <button>X</button>
+                <button onClick={this.props.remove.bind(this,item.id)}>X</button>
             </div>
         });
         return (
@@ -25,7 +25,8 @@ function mapStateToProps(state) {
 
 function mapDispatchProps(dispach) {
     return{
-        changeIsDown:(id)=>dispach({type:'CHANGEISDOWN',id})
+        changeIsDown:(id)=>dispach({type:'CHANGEISDOWN',id}),
+        remove:(id)=>dispach({type:'DELETE',id})
     }
 }
 

@@ -12,6 +12,12 @@ export default function reducer(state = {todos: []}, action) {
             return {
                 todos:[...state.todos]
             }
+        case 'DELETE':
+            const index=state.todos.indexOf(state.todos.find(todo=>todo.id === action.id));
+            state.todos.splice(index,1);
+            return{
+                todos:[...state.todos]
+            }
 
     }
     return state;
